@@ -3,16 +3,16 @@
   "bookSourceType": 0,
   "bookSourceName": "速读谷",
   "bookSourceGroup": "小说",
-  "bookSourceComment": "书源由AI制作，仅供参考",
+  "bookSourceComment": "优化版本，添加了错误处理和缓存优化",
   "loginUrl": "",
   "loginUi": "",
   "concurrentRate": "3",
-  "header": "{\"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\", \"Referer\": \"https://www.sudugu.org/\", \"Accept\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\", \"Accept-Language\": \"zh-CN,zh;q=0.9,en;q=0.8\", \"Accept-Encoding\": \"gzip, deflate, br\", \"Connection\": \"keep-alive\", \"Upgrade-Insecure-Requests\": \"1\"}",
-  "searchUrl": "https://www.sudugu.org/i/sor.aspx?key={{key}}",
+  "header": "{\"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\", \"Referer\": \"https://www.sudugu.org/\", \"Accept\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\", \"Accept-Language\": \"zh-CN,zh;q=0.9\", \"Accept-Encoding\": \"gzip, deflate\"}",
+  "searchUrl": "https://www.sudugu.org/i/sor.aspx?key={{key}}&page=0",
   "exploreUrl": "",
   "enabled": true,
   "enabledExplore": false,
-  "weight": 0,
+  "weight": 10,
   "customOrder": 0,
   "lastUpdateTime": 0,
   "ruleSearch": {
@@ -23,43 +23,58 @@
     "lastChapter": ".itemtxt ul li:first-child a@text",
     "intro": ".itemtxt p:eq(0) span@text||.itemtxt p:eq(2) a@text",
     "coverUrl": "img@src",
-    "wordCount": ""
+    "wordCount": "",
+    "status": ".itemtxt p:eq(0) span:first-child@text"
   },
   "ruleBookInfo": {
-    "name": "h1@text||.booktitle h1@text",
-    "author": ".bookinfo ul li:eq(0)@text||#info > div.book-info > ul > li:eq(0) > span:eq(1)@text",
-    "intro": ".intro@text||#intro@text",
-    "kind": ".bookinfo ul li:eq(1)@text||#info > div.book-info > ul > li:eq(2) > a@text",
-    "lastChapter": ".bookinfo ul li:eq(4) a@text||#info > div.book-info > ul > li:eq(5) > a@text",
-    "coverUrl": ".bookimg img@src||#fmimg img@src",
-    "wordCount": ".bookinfo ul li:eq(2)@text||#info > div.book-info > ul > li:eq(1) > span:eq(1)@text",
-    "status": ".bookinfo ul li:eq(3)@text||#info > div.book-info > ul > li:eq(3) > span:eq(1)@text"
+    "name": "h1@text",
+    "author": ".bookinfo ul li:eq(0)@text##作者：",
+    "intro": ".intro@text",
+    "kind": ".bookinfo ul li:eq(1)@text##分类：",
+    "lastChapter": ".bookinfo ul li:eq(4) a@text",
+    "coverUrl": ".bookimg img@src",
+    "wordCount": ".bookinfo ul li:eq(2)@text##字数：",
+    "status": ".bookinfo ul li:eq(3)@text##状态：",
+    "updateTime": ".bookinfo ul li:eq(5)@text##更新时间：",
+    "tocUrl": ""
   },
   "ruleToc": {
     "chapterList": "#list ul li a",
     "chapterName": "text",
     "chapterUrl": "@href",
-    "isVip": "",
+    "isVip": "false",
     "updateTime": ""
   },
   "ruleContent": {
-    "content": ".con@html||.content@html||#content@html",
-    "nextContentUrl": "a:contains(下一页)@href||.prenext a:contains(下一页)@href",
+    "content": ".con@html",
+    "nextContentUrl": ".prenext a:contains(下一页)@href",
     "sourceRegex": "",
-    "replaceRegex": "(www\\.sudugu\\.org.*?)|(请收藏本站.*?)|(推荐阅读.*?)|(<!--.*?-->)|(<script.*?</script>)|(<style.*?</style>)|(速读谷.*?)|(本章未完.*?)|(设置)|(<div class=\"submenu\".*?</div>)|(<div class=\"prenext\".*?</div>)",
+    "replaceRegex": "(www\\.sudugu\\.org.*?)|(请收藏本站.*?)|(推荐阅读.*?)|(速读谷.*?)|(设置)|(本章未完.*?)|(^<p>第\\d+章[^<]+</p>)",
     "imageStyle": "display: block; margin: 0 auto; max-width: 100%; height: auto;",
-    "filter": "div#google_ad, .ad, .ads, .advertisement, [class*=\"ad-\"], [id*=\"ad-\"], .page-content, .chapter-nav, .chapter-tools, .submenu, .prenext, .container > div:first-child",
+    "filter": ".submenu, .prenext, .ad, .ads, [class*=\"ad-\"], [id*=\"ad-\"]",
     "contentReplace": [
       {
-        "regex": "^<p>第\\d+章[^<]+</p>",
+        "regex": "<div[^>]*class=\"submenu\"[^>]*>.*?</div>",
+        "replace": ""
+      },
+      {
+        "regex": "<div[^>]*class=\"prenext\"[^>]*>.*?</div>",
         "replace": ""
       },
       {
         "regex": "<p>\\s*</p>",
         "replace": ""
+      },
+      {
+        "regex": "<br\\s*/?>\\s*<br\\s*/?>",
+        "replace": "<br/>"
       }
     ],
     "webJs": "",
-    "style": ""
-  }
+    "style": "@css:{body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;font-size:18px;line-height:1.6;color:#333;padding:12px;margin:0;background:#f8f9fa;}p{margin:1em 0;text-indent:2em;}}"
+  },
+  "ruleReview": {},
+  "ruleExplore": {},
+  "searchCheck": "斗罗大陆",
+  "searchCheckResult": "唐家三少"
 }
