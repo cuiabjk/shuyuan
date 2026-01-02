@@ -22,30 +22,31 @@
     "bookUrl": "h3 a@href",
     "lastChapter": ".itemtxt ul li:first-child a@text",
     "intro": ".itemtxt p:eq(0) span@text||.itemtxt p:eq(2) a@text",
-    "coverUrl": "img@src"
+    "coverUrl": "img@src",
+    "wordCount": ""
   },
   "ruleBookInfo": {
-    "name": "h1@text",
-    "author": ".bookinfo ul li:eq(0)@text||//*[@id=\"info\"]/div[2]/ul/li[1]/span[2]/a@text",
+    "name": "h1@text||.booktitle h1@text",
+    "author": ".bookinfo ul li:eq(0)@text||#info > div.book-info > ul > li:eq(0) > span:eq(1)@text",
     "intro": ".intro@text||#intro@text",
-    "kind": ".bookinfo ul li:eq(1)@text||//*[@id=\"info\"]/div[2]/ul/li[3]/a@text",
-    "lastChapter": ".bookinfo ul li:eq(4) a@text||#info > div.book-info > ul > li:nth-child(6) > a@text",
+    "kind": ".bookinfo ul li:eq(1)@text||#info > div.book-info > ul > li:eq(2) > a@text",
+    "lastChapter": ".bookinfo ul li:eq(4) a@text||#info > div.book-info > ul > li:eq(5) > a@text",
     "coverUrl": ".bookimg img@src||#fmimg img@src",
-    "wordCount": ".bookinfo ul li:eq(2)@text||//*[@id=\"info\"]/div[2]/ul/li[2]/span[2]@text",
-    "status": ".bookinfo ul li:eq(3)@text||//*[@id=\"info\"]/div[2]/ul/li[4]/span[2]@text"
+    "wordCount": ".bookinfo ul li:eq(2)@text||#info > div.book-info > ul > li:eq(1) > span:eq(1)@text",
+    "status": ".bookinfo ul li:eq(3)@text||#info > div.book-info > ul > li:eq(3) > span:eq(1)@text"
   },
   "ruleToc": {
-    "chapterList": "#list ul li a||.listmain dd a",
+    "chapterList": "#list ul li a",
     "chapterName": "text",
-    "chapterUrl": "@href"
+    "chapterUrl": "@href",
+    "isVip": "",
+    "updateTime": ""
   },
   "ruleContent": {
-    "content": "#content@html||#BookText@html",
+    "content": "#content@html||.content@html||#chaptercontent@html",
     "nextContentUrl": "a:contains(下一页)@href||a:matches(下一章)@href",
-    "replaceRegex": "(www\\.sudugu\\.org.*?)|(请收藏本站.*?)|(推荐阅读.*?)|(<!--.*?-->)|(<script.*?</script>)|(<style.*?</style>)",
+    "replaceRegex": "(www\\.sudugu\\.org.*?)|(请收藏本站.*?)|(推荐阅读.*?)|(<!--.*?-->)|(<script.*?</script>)|(<style.*?</style>)|(速读谷.*?)|(本章未完.*?)",
     "imageStyle": "display: block; margin: 0 auto; max-width: 100%; height: auto;",
-    "filter": "div#google_ad, .ad, .ads, .advertisement, [class*=\"ad-\"], [id*=\"ad-\"]"
-  },
-  "ruleReview": {},
-  "ruleExplore": {}
+    "filter": "div#google_ad, .ad, .ads, .advertisement, [class*=\"ad-\"], [id*=\"ad-\"], .page-content, .chapter-nav, .chapter-tools"
+  }
 }
