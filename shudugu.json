@@ -1,0 +1,35 @@
+{
+    "bookSourceName": "速读谷",
+    "bookSourceGroup": "免费书源",
+    "bookSourceUrl": "https://www.sudugu.org",
+    "bookSourceType": 0,
+    "bookSourceVersion": 105,
+    "bookSourceComment": "速读谷书源 - 已测试可用",
+    "ruleSearch": {
+      "bookList": "class.item",
+      "name": "tag.h3 a@text",
+      "author": "tag.p.1 a@text##作者：",
+      "cover": "tag.img@src",
+      "bookUrl": "tag.h3 a@href"
+    },
+    "ruleBookInfo": {
+      "name": "tag.h1 a@text",
+      "author": "tag.p.1 a@text##作者：",
+      "cover": "tag.img@src",
+      "intro": "class.des@text",
+      "lastChapter": "tag.ul a.0@text"
+    },
+    "ruleToc": {
+      "chapterList": "id.list a",
+      "chapterName": "@text",
+      "chapterUrl": "@href"
+    },
+    "ruleContent": {
+      "content": "id.content@html"
+    },
+    "searchUrl": "https://www.sudugu.org/i/sor.aspx?key={{key}}",
+    "enabled": true,
+    "enabledExplore": false,
+    "header": "",
+    "concurrentRate": "5"
+  }
