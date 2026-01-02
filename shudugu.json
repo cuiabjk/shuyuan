@@ -1,39 +1,48 @@
 {
-  "bookSourceUrl": "https://www.sudugu.org",
-  "bookSourceType": 0,
-  "bookSourceName": "速读谷",
-  "bookSourceGroup": "小说",
   "bookSourceComment": "书源由AI制作，仅供参考（已修复内容为空异常）",
-  "loginUrl": "",
-  "loginUi": "",
+  "bookSourceGroup": "小说",
+  "bookSourceName": "速读谷",
+  "bookSourceType": 0,
+  "bookSourceUrl": "https://www.sudugu.org",
   "concurrentRate": "1",
-  "header": "{\"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\", \"Referer\": \"https://www.sudugu.org/\"}",
-  "searchUrl": "https://www.sudugu.org/i/sor.aspx?key={{key}}",
-  "exploreUrl": "",
-  "enabled": true,
-  "enabledExplore": false,
-  "weight": 0,
   "customOrder": 0,
-  "lastUpdateTime": 0,
-  "ruleSearch": {
-    "bookList": ".item",
-    "name": "h3 a@text",
-    "author": ".itemtxt p:eq(2) a@text##作者：",
-    "bookUrl": "h3 a@href",
-    "lastChapter": ".itemtxt ul li:first-child a@text",
-    "intro": ".itemtxt p:eq(0) span@text||.itemtxt p:eq(2) a@text",
-    "coverUrl": "img@src",
-    "wordCount": ""
-  },
+  "enabled": true,
+  "enabledCookieJar": false,
+  "enabledExplore": false,
+  "exploreUrl": "",
+  "header": "{\n  'User-Agent': \"Mozilla/5.0 (Linux; Android 15; V2304A Build/AP3A.240905.015.A2; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/126.0.6478.71 Mobile Safari/537.36\",\n  'sec-ch-ua-platform': \"\\\"Android\\\"\",\n  'origin': \"https://m.00shu.la/\",\n  'x-requested-with': \"cn.mujiankeji.mbrowser\",\n  'referer': \"https://m.00shu.la/\",\n  'accept-language': \"zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7\"\n}",
+  "lastUpdateTime": 1767386539625,
+  "loginUi": "",
+  "loginUrl": "",
+  "respondTime": 180000,
   "ruleBookInfo": {
-    "name": "h1@text||.booktitle h1@text",
     "author": ".bookinfo ul li:eq(0)@text||#info > div.book-info > ul > li:eq(0) > span:eq(1)@text",
+    "coverUrl": ".bookimg img@src||#fmimg img@src",
+    "init": "",
     "intro": ".intro@text||#intro@text",
     "kind": ".bookinfo ul li:eq(1)@text||#info > div.book-info > ul > li:eq(2) > a@text",
     "lastChapter": ".bookinfo ul li:eq(4) a@text||#info > div.book-info > ul > li:eq(5) > a@text",
-    "coverUrl": ".bookimg img@src||#fmimg img@src",
-    "wordCount": ".bookinfo ul li:eq(2)@text||#info > div.book-info > ul > li:eq(1) > span:eq(1)@text",
-    "status": ".bookinfo ul li:eq(3)@text||#info > div.book-info > ul > li:eq(3) > span:eq(1)@text"
+    "name": "h1@text||.booktitle h1@text",
+    "wordCount": ".bookinfo ul li:eq(2)@text||#info > div.book-info > ul > li:eq(1) > span:eq(1)@text"
+  },
+  "ruleContent": {
+    "content": ".con@html",
+    "imageStyle": "",
+    "nextContentUrl": "a:contains(下一页)@href||.prenext a:contains(下一页)@href",
+    "replaceRegex": ""
+  },
+  "ruleExplore": {
+    "bookList": ""
+  },
+  "ruleSearch": {
+    "author": ".itemtxt p:eq(2) a@text##作者：",
+    "bookList": ".item",
+    "bookUrl": "h3 a@href",
+    "coverUrl": "img@src",
+    "intro": ".itemtxt p:eq(0) span@text||.itemtxt p:eq(2) a@text",
+    "lastChapter": ".itemtxt ul li:first-child a@text",
+    "name": "h3 a@text",
+    "wordCount": ""
   },
   "ruleToc": {
     "chapterList": "#list ul li a",
@@ -42,12 +51,6 @@
     "isVip": "",
     "updateTime": ""
   },
-  "ruleContent": {
-  "content": ".con@html",
-  "nextContentUrl": ".prenext a:contains(下一页)@href",
-  "replaceRegex": "",
-  "imageStyle": "display: block; margin: 0 auto; max-width: 100%; height: auto;",
-  "filter": "",
-  "contentReplace": []
-}
+  "searchUrl": "https://www.sudugu.org/i/sor.aspx?key={{key}}",
+  "weight": 0
 }
