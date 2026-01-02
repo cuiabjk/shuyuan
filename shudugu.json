@@ -43,20 +43,11 @@
     "updateTime": ""
   },
   "ruleContent": {
-    "content": ".con@html||.content@html",
-    "nextContentUrl": "a:contains(下一页)@href||.prenext a:contains(下一页)@href",
-    "replaceRegex": "(www\\.sudugu\\.org[\\s\\S]*?)|(请收藏本站[\\s\\S]*?)|(推荐阅读[\\s\\S]*?)|(<!--[\\s\\S]*?-->)|(<script[\\s\\S]*?</script>)|(<style[\\s\\S]*?</style>)|(本章未完[\\s\\S]*?)|(<div class=\"submenu\"[\\s\\S]*?</div>)",
-    "imageStyle": "display: block; margin: 0 auto; max-width: 100%; height: auto;",
-    "filter": "div#google_ad, .ad, .ads, .advertisement, [class*=\"ad-\"], [id*=\"ad-\"], .submenu",
-    "contentReplace": [
-      {
-        "regex": "<p>第\\d+章[^<]*</p>",
-        "replace": ""
-      },
-      {
-        "regex": "<p>\\s*</p>",
-        "replace": ""
-      }
-    ]
-  }
+  "content": ".con@html",
+  "nextContentUrl": ".prenext a:contains(下一页)@href",
+  "replaceRegex": "",
+  "imageStyle": "display: block; margin: 0 auto; max-width: 100%; height: auto;",
+  "filter": "",
+  "contentReplace": []
+}
 }
