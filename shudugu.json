@@ -1,5 +1,5 @@
 {
-  "bookSourceComment": "书源由AI制作，仅供参考（已修复内容为空异常）",
+  "bookSourceComment": "书源由AI制作，仅供参考",
   "bookSourceGroup": "小说",
   "bookSourceName": "速读谷",
   "bookSourceType": 0,
@@ -48,6 +48,7 @@
     "chapterList": "#list ul li a",
     "chapterName": "text",
     "chapterUrl": "@href",
+    "nextTocUrl": "#pages a.gr@href||.pages a:contains(下一页)@href",
     "isVip": "",
     "updateTime": ""
   },
