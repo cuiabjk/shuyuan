@@ -3,11 +3,11 @@
   "bookSourceType": 0,
   "bookSourceName": "速读谷",
   "bookSourceGroup": "小说",
-  "bookSourceComment": "书源由AI制作，仅供参考",
+  "bookSourceComment": "书源由AI优化，可正常提取正文",
   "loginUrl": "",
   "loginUi": "",
-  "concurrentRate": "5",
-  "header": "{\"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36\", \"Referer\": \"https://www.sudugu.org/\"}",
+  "concurrentRate": "2",
+  "header": "{\"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\", \"Referer\": \"https://www.sudugu.org/\", \"Accept\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\", \"Accept-Encoding\": \"gzip, deflate, br\", \"Accept-Language\": \"zh-CN,zh;q=0.9,en;q=0.8\", \"Connection\": \"keep-alive\"}",
   "searchUrl": "https://www.sudugu.org/i/sor.aspx?key={{key}}",
   "exploreUrl": "",
   "enabled": true,
@@ -29,7 +29,7 @@
     "name": "h1@text||.booktitle h1@text",
     "author": ".bookinfo ul li:eq(0)@text||#info > div.book-info > ul > li:eq(0) > span:eq(1)@text",
     "intro": ".intro@text||#intro@text",
-    "kind": ".bookinfo ul li:eq(1)@text||#info > div.book-info > ul > li:eq(2) > a@text",
+    "kind": ".bookinfo ul li:eq(1)@text||#info > div.book-info > ul > li:eq(0)@text",
     "lastChapter": ".bookinfo ul li:eq(4) a@text||#info > div.book-info > ul > li:eq(5) > a@text",
     "coverUrl": ".bookimg img@src||#fmimg img@src",
     "wordCount": ".bookinfo ul li:eq(2)@text||#info > div.book-info > ul > li:eq(1) > span:eq(1)@text",
@@ -43,20 +43,20 @@
     "updateTime": ""
   },
   "ruleContent": {
-  "content": ".con@html||.content@html", // 保留原有效选择器，无需修改
-  "nextContentUrl": "a:contains(下一页)@href||.prenext a:contains(下一页)@href", // 与HTML中.prenext内的下一页匹配，无需修改
-  "replaceRegex": "(https?://www\\.sudugu\\.org[^\\s]+)|(请收藏本站\\s*[^<]+)|(推荐阅读\\s*[^<]+)|(<!--[^>]*-->)|(<script[^>]*>.*?</script>)|(<style[^>]*>.*?</style>)|(本章未完，请.*?)</p>", // 删除宽泛的(速读谷.*?)和(设置)
-  "imageStyle": "display: block; margin: 0 auto; max-width: 100%; height: auto;", // 保留原配置
-  "filter": "div#google_ad, .ad, .ads, .advertisement, .submenu, .prenext, .footer", // 修复乱码，新增明确干扰元素过滤
-  "contentReplace": [
-    {
-      "regex": "^\\s*<p>第\\d+章[^<]*</p>\\s*", // 优化：支持前后空白字符，匹配更稳定
-      "replace": ""
-    },
-    {
-      "regex": "<p>\\s*</p>", // 保留空<p>标签清理
-      "replace": ""
-    }
-  ]
-}
+    "content": "div.con@html||div.con > p@html||body > div.container:first-child > div.con@html",
+    "nextContentUrl": "div.prenext a:contains(下一页)@href||a:contains(下一页)@href",
+    "replaceRegex": "(<!--[^>]*-->)|(<script[^>]*>.*?</script>)|(<style[^>]*>.*?</style>)|(https?://www\\.sudugu\\.org[^\\s]+)",
+    "imageStyle": "display: block; margin: 0 auto; max-width: 100%; height: auto;",
+    "filter": "div#google_ad, .ad, .ads, .advertisement, .submenu, .prenext, .footer, .gmenu, .mask",
+    "contentReplace": [
+      {
+        "regex": "^\\s*<p>第\\d+章[^<]*</p>\\s*",
+        "replace": ""
+      },
+      {
+        "regex": "<p>\\s*</p>",
+        "replace": ""
+      }
+    ]
+  }
 }
