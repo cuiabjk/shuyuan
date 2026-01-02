@@ -1,35 +1,51 @@
 {
-    "bookSourceName": "速读谷",
-    "bookSourceGroup": "免费书源",
-    "bookSourceUrl": "https://www.sudugu.org",
-    "bookSourceType": 0,
-    "bookSourceVersion": 105,
-    "bookSourceComment": "速读谷书源 - 已测试可用",
-    "ruleSearch": {
-      "bookList": "class.item",
-      "name": "tag.h3 a@text",
-      "author": "tag.p.1 a@text##作者：",
-      "cover": "tag.img@src",
-      "bookUrl": "tag.h3 a@href"
-    },
-    "ruleBookInfo": {
-      "name": "tag.h1 a@text",
-      "author": "tag.p.1 a@text##作者：",
-      "cover": "tag.img@src",
-      "intro": "class.des@text",
-      "lastChapter": "tag.ul a.0@text"
-    },
-    "ruleToc": {
-      "chapterList": "id.list a",
-      "chapterName": "@text",
-      "chapterUrl": "@href"
-    },
-    "ruleContent": {
-      "content": "id.content@html"
-    },
-    "searchUrl": "https://www.sudugu.org/i/sor.aspx?key={{key}}",
-    "enabled": true,
-    "enabledExplore": false,
-    "header": "",
-    "concurrentRate": "5"
-  }
+  "bookSourceUrl": "https://www.sudugu.org",
+  "bookSourceType": 0,
+  "bookSourceName": "速读谷",
+  "bookSourceGroup": "小说",
+  "bookSourceComment": "书源由AI制作，仅供参考",
+  "loginUrl": "",
+  "loginUi": "",
+  "concurrentRate": "5",
+  "header": "{\"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36\", \"Referer\": \"https://www.sudugu.org/\"}",
+  "searchUrl": "https://www.sudugu.org/i/sor.aspx?key={{key}}",
+  "exploreUrl": "",
+  "enabled": true,
+  "enabledExplore": false,
+  "weight": 0,
+  "customOrder": 0,
+  "lastUpdateTime": 0,
+  "ruleSearch": {
+    "bookList": ".item",
+    "name": "h3 a@text",
+    "author": ".itemtxt p:eq(2) a@text##作者：",
+    "bookUrl": "h3 a@href",
+    "lastChapter": ".itemtxt ul li:first-child a@text",
+    "intro": ".itemtxt p:eq(0) span@text||.itemtxt p:eq(2) a@text",
+    "coverUrl": "img@src"
+  },
+  "ruleBookInfo": {
+    "name": "h1@text",
+    "author": ".bookinfo ul li:eq(0)@text||//*[@id=\"info\"]/div[2]/ul/li[1]/span[2]/a@text",
+    "intro": ".intro@text||#intro@text",
+    "kind": ".bookinfo ul li:eq(1)@text||//*[@id=\"info\"]/div[2]/ul/li[3]/a@text",
+    "lastChapter": ".bookinfo ul li:eq(4) a@text||#info > div.book-info > ul > li:nth-child(6) > a@text",
+    "coverUrl": ".bookimg img@src||#fmimg img@src",
+    "wordCount": ".bookinfo ul li:eq(2)@text||//*[@id=\"info\"]/div[2]/ul/li[2]/span[2]@text",
+    "status": ".bookinfo ul li:eq(3)@text||//*[@id=\"info\"]/div[2]/ul/li[4]/span[2]@text"
+  },
+  "ruleToc": {
+    "chapterList": "#list ul li a||.listmain dd a",
+    "chapterName": "text",
+    "chapterUrl": "@href"
+  },
+  "ruleContent": {
+    "content": "#content@html||#BookText@html",
+    "nextContentUrl": "a:contains(下一页)@href||a:matches(下一章)@href",
+    "replaceRegex": "(www\\.sudugu\\.org.*?)|(请收藏本站.*?)|(推荐阅读.*?)|(<!--.*?-->)|(<script.*?</script>)|(<style.*?</style>)",
+    "imageStyle": "display: block; margin: 0 auto; max-width: 100%; height: auto;",
+    "filter": "div#google_ad, .ad, .ads, .advertisement, [class*=\"ad-\"], [id*=\"ad-\"]"
+  },
+  "ruleReview": {},
+  "ruleExplore": {}
+}
